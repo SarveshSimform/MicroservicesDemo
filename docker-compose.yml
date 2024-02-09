@@ -1,0 +1,65 @@
+version: '3.4'
+
+services:
+  newsletter-mq:
+    image: rabbitmq:management
+    container_name: Newsletter.RabbitMq
+    hostname: newsletter-mq
+    volumes:
+      - ./.containers/queue/data/:/var/lib/rabbitmq
+      - ./.containers/queue/log/:/var/log/rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+
+  newsletter-seq:
+    image: datalust/seq:latest
+    container_name: Newsletter.Seq
+    environment: 
+      - ACCEPT_EULA=Y
+    ports:
+      - 5341:5341
+      - 8081:80
+
+  newsletter-api:
+    image: newsletter-api
+    container_name: Newsletter.Api
+    depends_on:
+      - "newsletter-mq"
+    build: 
+      context: .
+      dockerfile: Newsletter.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "8001:80"
+
+  newsletter-reporting-api:
+    image: newsletter-reporting-api
+    container_name: Newsletter.Reorting.Api
+    depends_on:
+      - "newsletter-mq"
+    build: 
+      context: .
+      dockerfile: Newsletter.Reporting.Api/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "9001:80"
+
+  newsletter-api-gateway:
+    image: newsletter-api-gateway
+    container_name: Newsletter.ApiGateway
+    depends_on:
+      - "newsletter-api"
+      - "newsletter-reporting-api"
+    build: 
+      context: .
+      dockerfile: Newsletter.ApiGateway/Dockerfile
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    ports:
+      - "10000:80"

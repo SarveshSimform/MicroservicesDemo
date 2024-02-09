@@ -1,0 +1,48 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Github.Api", "Github.Api\Github.Api.csproj", "{036D6662-EA87-4A37-A406-73F395DEB55F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{F8CD18D7-2035-4B58-9C22-9BF999B59C99}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Api", "Newsletter.Api\Newsletter.Api.csproj", "{8C5C6896-CF5F-4401-8334-1688E3E5D08D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Reporting.Api", "Newsletter.Reporting.Api\Newsletter.Reporting.Api.csproj", "{EA82E9CD-DCF3-48C0-AD9C-622D7C8778F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Shared", "Newsletter.Shared\Newsletter.Shared.csproj", "{AEA432EE-AC58-4FE1-A147-4721B7D247D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.ApiGateway", "Newsletter.ApiGateway\Newsletter.ApiGateway.csproj", "{337DBEEC-3DD8-4B7E-A1F3-11D8B2BFA774}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{036D6662-EA87-4A37-A406-73F395DEB55F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{036D6662-EA87-4A37-A406-73F395DEB55F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{036D6662-EA87-4A37-A406-73F395DEB55F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{036D6662-EA87-4A37-A406-73F395DEB55F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C5C6896-CF5F-4401-8334-1688E3E5D08D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5C6896-CF5F-4401-8334-1688E3E5D08D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5C6896-CF5F-4401-8334-1688E3E5D08D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5C6896-CF5F-4401-8334-1688E3E5D08D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA82E9CD-DCF3-48C0-AD9C-622D7C8778F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA82E9CD-DCF3-48C0-AD9C-622D7C8778F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA82E9CD-DCF3-48C0-AD9C-622D7C8778F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA82E9CD-DCF3-48C0-AD9C-622D7C8778F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEA432EE-AC58-4FE1-A147-4721B7D247D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEA432EE-AC58-4FE1-A147-4721B7D247D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEA432EE-AC58-4FE1-A147-4721B7D247D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEA432EE-AC58-4FE1-A147-4721B7D247D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337DBEEC-3DD8-4B7E-A1F3-11D8B2BFA774}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337DBEEC-3DD8-4B7E-A1F3-11D8B2BFA774}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337DBEEC-3DD8-4B7E-A1F3-11D8B2BFA774}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337DBEEC-3DD8-4B7E-A1F3-11D8B2BFA774}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8C5C6896-CF5F-4401-8334-1688E3E5D08D} = {F8CD18D7-2035-4B58-9C22-9BF999B59C99}
+		{EA82E9CD-DCF3-48C0-AD9C-622D7C8778F0} = {F8CD18D7-2035-4B58-9C22-9BF999B59C99}
+		{AEA432EE-AC58-4FE1-A147-4721B7D247D5} = {F8CD18D7-2035-4B58-9C22-9BF999B59C99}
+		{337DBEEC-3DD8-4B7E-A1F3-11D8B2BFA774} = {F8CD18D7-2035-4B58-9C22-9BF999B59C99}
+	EndGlobalSection
+EndGlobal

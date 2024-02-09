@@ -1,0 +1,91 @@
+name: CI for Newsletter Microservices
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths-ignore:
+      - README.md
+      - .gitignore
+        
+jobs:
+  build-and-push-newsletter-api:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - 
+        name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - 
+        name: Build and Push docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Newsletter.Api/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/newsletter-api:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/newsletter-api:${{ github.run_number }}
+
+  build-and-push-newsletter-reporting-api:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
+      -
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v1
+      - 
+        name: Login to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+      - 
+        name: Build and Push docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Newsletter.Reporting.Api/Dockerfile
+          push: true
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/newsletter-reporting-api:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/newsletter-reporting-api:${{ github.run_number }}
+
+  build-and-push-newsletter-api-gateway:
+      runs-on: ubuntu-latest
+      steps:
+        - 
+          name: Checkout
+          uses: actions/checkout@v2
+        -
+          name: Set up QEMU
+          uses: docker/setup-qemu-action@v1
+        -
+          name: Set up Docker Buildx
+          uses: docker/setup-buildx-action@v1
+        - 
+          name: Login to Docker Hub
+          uses: docker/login-action@v1
+          with:
+            username: ${{ secrets.DOCKER_HUB_USERNAME }}
+            password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+        - 
+          name: Build and Push docker image
+          uses: docker/build-push-action@v2
+          with:
+            context: .
+            file: ./Newsletter.ApiGateway/Dockerfile
+            push: true
+            tags: ${{ secrets.DOCKER_HUB_USERNAME }}/newsletter-api-gateway:latest, ${{ secrets.DOCKER_HUB_USERNAME }}/newsletter-api-gateway:${{ github.run_number }}
